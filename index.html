@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Whiteout Survival — Sneak Peek: Dawn Feast (3rd Anniversary)</title>
+  <meta name="description" content="A clean, responsive event page inspired by the Whiteout Survival Wiki sneak peek for the Dawn Feast / 3rd Anniversary content." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a30;
+      --panel2:#0c1730;
+      --text:#e9eefc;
+      --muted:#a9b7da;
+      --line:rgba(255,255,255,.10);
+      --chip:rgba(255,255,255,.08);
+      --accent:#6ea8ff;
+      --accent2:#7cf0c5;
+      --warn:#ffce6a;
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f8ff;
+        --panel:#ffffff;
+        --panel2:#ffffff;
+        --text:#0c1630;
+        --muted:#42527a;
+        --line:rgba(12,22,48,.10);
+        --chip:rgba(12,22,48,.06);
+        --accent:#2b6cff;
+        --accent2:#0aa77f;
+        --warn:#b56a00;
+        --shadow: 0 10px 30px rgba(22, 35, 70, .12);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(110,168,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(124,240,197,.14), transparent 55%),
+        radial-gradient(900px 700px at 50% 100%, rgba(255,206,106,.12), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .container{max-width:1100px; margin:0 auto; padding:28px 18px 72px;}
+    header{
+      position:sticky; top:0; z-index:50;
+      background: linear-gradient(to bottom, rgba(11,18,32,.92), rgba(11,18,32,.65), transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    @media (prefers-color-scheme: light){
+      header{
+        background: linear-gradient(to bottom, rgba(246,248,255,.92), rgba(246,248,255,.70), transparent);
+      }
+    }
+    .topbar{
+      max-width:1100px; margin:0 auto;
+      padding:14px 18px;
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center; min-width: 220px;
+      text-decoration:none;
+    }
+    .logo{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:-30%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 55%);
+      transform: rotate(20deg);
+    }
+    .brand h1{
+      font-size:14px; margin:0; letter-spacing:.3px; font-weight:800;
+    }
+    .brand p{
+      margin:0; font-size:12px; color:var(--muted);
+    }
+    nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .pill{
+      text-decoration:none;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius:999px;
+      font-size:12px;
+      color:var(--muted);
+      transition: transform .12s ease, background .12s ease, color .12s ease;
+    }
+    @media (prefers-color-scheme: light){
+      .pill{background: rgba(12,22,48,.03);}
+    }
+    .pill:hover{transform: translateY(-1px); color:var(--text); background: rgba(255,255,255,.08);}
+    .hero{
+      padding:22px 0 10px;
+    }
+    .grid-hero{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 960px){
+      .grid-hero{grid-template-columns: 1fr; }
+      .brand{min-width:auto}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    @media (prefers-color-scheme: light){
+      .card{background: linear-gradient(180deg, rgba(12,22,48,.03), rgba(12,22,48,.015));}
+    }
+    .card.pad{padding:18px;}
+    .notice{
+      border-left: 4px solid var(--warn);
+      background: linear-gradient(90deg, rgba(255,206,106,.16), rgba(255,206,106,.06));
+      padding:14px 14px;
+      border-radius: 14px;
+    }
+    .notice strong{color: var(--warn)}
+    .hero-img{
+      display:block; width:100%; height:100%;
+      object-fit:cover;
+      aspect-ratio: 16 / 9;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .kicker{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: var(--chip);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .title{
+      margin:10px 0 0;
+      font-size:34px;
+      line-height:1.1;
+      letter-spacing:-.6px;
+    }
+    .subtitle{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      max-width: 62ch;
+    }
+    .meta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .tag{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius: 999px;
+      background: var(--chip);
+      border:1px solid var(--line);
+      color: var(--muted);
+    }
+    .tag b{color:var(--text)}
+    .section{
+      margin-top:18px;
+    }
+    .section h2{
+      margin:0 0 12px;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .toc{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    @media (max-width: 520px){ .toc{grid-template-columns:1fr;} }
+    .toc a{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      text-decoration:none;
+      color: var(--muted);
+      transition: transform .12s ease, color .12s ease, background .12s ease;
+    }
+    @media (prefers-color-scheme: light){
+      .toc a{background: rgba(12,22,48,.02);}
+    }
+    .toc a:hover{transform: translateY(-1px); color: var(--text); background: rgba(255,255,255,.06);}
+    .toc small{opacity:.9}
+    .content-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 960px){ .content-grid{grid-template-columns:1fr;} }
+    .event{
+      display:grid;
+      grid-template-columns: 160px 1fr;
+      gap:14px;
+      padding:14px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    @media (prefers-color-scheme: light){
+      .event{background: rgba(12,22,48,.02);}
+    }
+    @media (max-width: 520px){ .event{grid-template-columns: 1fr;} }
+    .event img{
+      width:100%;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      object-fit:cover;
+      aspect-ratio: 3 / 4;
+      background: rgba(0,0,0,.12);
+    }
+    .event h3{margin:0; font-size:16px}
+    .event p{margin:6px 0 0; color:var(--muted); font-size:13px}
+    ul{margin:10px 0 0; padding-left: 18px; color: var(--muted); font-size:13px}
+    li{margin:6px 0}
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 960px){ .split{grid-template-columns:1fr;} }
+    .codebox{
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px dashed var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .codebox code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:14px; letter-spacing:.8px;
+      color: var(--text);
+    }
+    .btn{
+      cursor:pointer;
+      border:1px solid var(--line);
+      background: linear-gradient(135deg, rgba(110,168,255,.22), rgba(124,240,197,.16));
+      color: var(--text);
+      padding:9px 10px;
+      border-radius: 12px;
+      font-size:12px;
+      transition: transform .12s ease, filter .12s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.05);}
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (max-width: 960px){ .gallery{grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 520px){ .gallery{grid-template-columns: 1fr;} }
+    .gallery img{
+      width:100%;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      object-fit:cover;
+      aspect-ratio: 16 / 9;
+      background: rgba(0,0,0,.12);
+      transition: transform .15s ease;
+    }
+    .gallery img:hover{transform: translateY(-2px);}
+    footer{
+      margin-top:28px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.72);
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
+    }
+    @media (prefers-color-scheme: light){
+      .toast{background: rgba(12,22,48,.86);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Dawn Feast — Sneak Peek</h1>
+          <p>3rd Anniversary event overview</p>
+        </div>
+      </a>
+
+      <nav aria-label="Page sections">
+        <a class="pill" href="#notice">Notice</a>
+        <a class="pill" href="#schedule">Schedule</a>
+        <a class="pill" href="#events">Events</a>
+        <a class="pill" href="#giftcode">Gift Code</a>
+        <a class="pill" href="#gallery">Gallery</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="grid-hero">
+        <div class="card">
+          <img
+            class="hero-img"
+            src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/20260304-095344.jpg"
+            alt="Whiteout Survival 3rd anniversary artwork"
+            loading="eager"
+          />
+        </div>
+
+        <div class="card pad">
+          <span class="kicker">🎉 3rd Anniversary • Dawn Feast</span>
+          <h2 class="title">A grand feast, fireworks, and alliance celebrations</h2>
+          <p class="subtitle">
+            During the event, contribute dishes with your allies to earn personal and alliance points,
+            climb leaderboards, and unlock limited rewards — including an exclusive permanent city skin.
+          </p>
+
+          <div class="meta" aria-label="Key details">
+            <span class="tag"><b>Timezone</b> UTC</span>
+            <span class="tag"><b>Main window</b> 03/06/2026 → 03/12/2026</span>
+            <span class="tag"><b>Alliance Gala</b> 03/13/2026</span>
+          </div>
+
+          <div class="section">
+            <h2>Quick navigation</h2>
+            <div class="toc">
+              <a href="#events"><span>Event modules</span><small>Feast • Chiefs • Fireworks • More</small></a>
+              <a href="#giftcode"><span>Gift code</span><small>Copy & redeem</small></a>
+              <a href="#tips"><span>Tips</span><small>Timing & availability</small></a>
+              <a href="#gallery"><span>Images</span><small>Key screenshots</small></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="notice" class="section card pad" style="margin-top:16px;">
+        <div class="notice">
+          <strong>Notice</strong><br/>
+          The “Dawn Feast” and “Frostdragon Tyrant” events will take place soon. Plan your alliance strategy ahead of time.
+          <div style="margin-top:10px; color:var(--muted);">
+            <b>Reminder:</b> The cutoff for alliance leaderboard tally and participation eligibility is at
+            <b>03/13 00:00:00 (UTC)</b>. Join your desired alliance beforehand.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule" class="section">
+      <div class="split">
+        <div class="card pad">
+          <h2>Event schedule</h2>
+          <ul>
+            <li><b>Main event:</b> 03/06/2026 00:00:00 → 03/12/2026 23:59:59 (UTC)</li>
+            <li><b>Dawn Gala scheduling window:</b> 03/13/2026 00:00:00 → 03/13/2026 23:59:59 (UTC) • lasts 1 hour</li>
+            <li><b>Kasia’s Wish House availability:</b> 03/07/2026 00:00:00 → 03/12/2026 23:59:59 (UTC)</li>
+          </ul>
+        </div>
+
+        <div id="tips" class="card pad">
+          <h2>Tips</h2>
+          <ul>
+            <li>Contribute dishes to earn <b>Personal Dining Points</b> and <b>Alliance Dining Points</b>.</li>
+            <li>Personal points drive personal leaderboard; alliance points decide alliance ranking and Gala hosting.</li>
+            <li>Some rewards and item details may vary based on server progress.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="section">
+      <div class="card pad">
+        <h2>Event modules</h2>
+        <p style="margin:0; color:var(--muted); font-size:13px;">
+          A clean, page-friendly summary of the featured activities. (Images are pulled from the source page.)
+        </p>
+
+        <div class="content-grid">
+          <article class="event" id="feast-overture">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-2.jpg" alt="Feast Overture screenshot" loading="lazy"/>
+            <div>
+              <h3>Feast Overture</h3>
+              <p>Get ingredients and cook dishes with allies to kick off the celebration.</p>
+              <ul>
+                <li>Earn ranking rewards and limited prizes by contributing dishes.</li>
+                <li>Tip: Use Alliance Fealty and Daily Specials for more points.</li>
+                <li>Event item: <b>Feast Bag</b> (random ingredient; converts to a 10K Resource Supply Chest after the event).</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="event" id="gourmet-spread">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-4.jpg" alt="Gourmet Spread screenshot" loading="lazy"/>
+            <div>
+              <h3>Gourmet Spread</h3>
+              <p>Submit dishes to gain alliance points and unlock rewards; time-limited packs offer extra rewards.</p>
+              <ul>
+                <li>Participate and submit dishes to obtain alliance points and unlock rewards.</li>
+                <li>Limited packs available during the event: Celebration Delicacies & Festive Delights.</li>
+                <li>Unclaimed rewards are mailed after the event or upon leaving the alliance.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="event" id="chiefs-of-dawn">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-6.jpg" alt="Chiefs of the Dawn screenshot" loading="lazy"/>
+            <div>
+              <h3>Chiefs of the Dawn</h3>
+              <p>A 7-stage competition across key progression activities.</p>
+              <ul>
+                <li>Stages: Power Boost, Beast Slay, Hero Development, Troop Training, Hero Gear, Gather Resources, Chief Gear.</li>
+                <li>Each stage lasts 1 day; earn points and claim milestone rewards.</li>
+                <li>Stage ranking rewards each day; total ranking rewards at the end.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="event" id="celebratory-symphony">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-8.jpg" alt="Celebratory Symphony screenshot" loading="lazy"/>
+            <div>
+              <h3>Celebratory Symphony</h3>
+              <p>Complete missions and lines to earn chests; finish everything for the Banquet Reliquary.</p>
+              <ul>
+                <li>Complete designated missions to earn rewards.</li>
+                <li>Complete a full vertical or horizontal line for a stage chest.</li>
+                <li>Complete all missions to obtain the <b>Banquet Reliquary</b>.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="event" id="top-up-benefits">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-7.jpg" alt="Top-up Benefits screenshot" loading="lazy"/>
+            <div>
+              <h3>Top-up Benefits</h3>
+              <p>Accumulate Top Up Points to earn special rewards during the celebration.</p>
+              <ul>
+                <li>Track your top-up milestones and claim rewards as you progress.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="event" id="trail-of-taste">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-11.jpg" alt="Trail of Taste screenshot" loading="lazy"/>
+            <div>
+              <h3>Trail of Taste</h3>
+              <p>Find ingredients through common gameplay actions (beasts, gathering, gems, speedups).</p>
+              <ul>
+                <li>Possible sources include spending gems, using speedups, gathering resources, and defeating beasts.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="event" id="celebration-firework">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-12.png" alt="Celebration Firework screenshot" loading="lazy"/>
+            <div>
+              <h3>Celebration Firework</h3>
+              <p>Set off fireworks in your city or another Chief’s city.</p>
+              <ul>
+                <li>Using multiple fireworks at once doesn’t extend duration—each triggers a new firework.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="event" id="snapshot-of-time">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-13.jpg" alt="Snapshot of Time screenshot" loading="lazy"/>
+            <div>
+              <h3>Snapshot of Time</h3>
+              <p>A celebratory feature highlighted during the anniversary period.</p>
+              <ul>
+                <li>Collect the themed rewards and visuals while the event window lasts.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="event" id="dawn-gala">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-15.jpg" alt="Dawn Gala screenshot" loading="lazy"/>
+            <div>
+              <h3>Dawn Gala</h3>
+              <p>Top alliances can host a one-hour feast after the event.</p>
+              <ul>
+                <li>Top 10 alliances on the Feast Overture leaderboard may host an Alliance Feast.</li>
+                <li>Venues vary by ranking: Feastmaster’s Hall (Top 1), Celebration Square (2–3), Banquet Pavilion (4–10).</li>
+                <li>Members can only participate in their own alliance’s feast during the tally phase.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="event" id="kasias-wish-house">
+            <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-16.png" alt="Kasia’s Wish House screenshot" loading="lazy"/>
+            <div>
+              <h3>Kasia’s Wish House</h3>
+              <p>Earn vouchers from commissions or packs, then spend them for rewards.</p>
+              <ul>
+                <li>Regular wishes build Wish Points; spend them for a “Sincere Wish” that lands on a Mythic corner prize.</li>
+                <li>Redeem Dream Marks in Kasia’s Shop for big rewards.</li>
+                <li>Unused Wish Points: every 100 converts to one Sincere Wish at event end; below 100 resets.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="giftcode" class="section">
+      <div class="card pad">
+        <h2>Gift code</h2>
+        <p style="margin:0; color:var(--muted); font-size:13px;">
+          Valid until <b>2026-03-06 23:59:00 (UTC)</b> • Requirement: <b>Furnace Level ≥ 9</b>
+        </p>
+
+        <div class="codebox" style="margin-top:12px;">
+          <div>
+            <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">Code</div>
+            <code id="giftCode">WOS3YS</code>
+          </div>
+          <button class="btn" id="copyBtn" type="button">Copy code</button>
+        </div>
+
+        <div style="margin-top:12px; color:var(--muted); font-size:12px;">
+          Redeem via the official Gift Code Center (linked on the source page).
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="card pad">
+        <h2>Gallery</h2>
+        <p style="margin:0; color:var(--muted); font-size:13px;">
+          A few highlights pulled from the event screenshots.
+        </p>
+
+        <div class="gallery" aria-label="Image gallery">
+          <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-2.jpg" alt="Feast Overture" loading="lazy"/>
+          <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-4.jpg" alt="Gourmet Spread" loading="lazy"/>
+          <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-6.jpg" alt="Chiefs of the Dawn" loading="lazy"/>
+          <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-8.jpg" alt="Celebratory Symphony" loading="lazy"/>
+          <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-12.png" alt="Celebration Firework" loading="lazy"/>
+          <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-15.jpg" alt="Dawn Gala" loading="lazy"/>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        Built as a standalone, responsive page based on the referenced Whiteout Survival Wiki sneak peek content.
+        Images and event details belong to their respective owners.
+      </div>
+      <div style="margin-top:8px;">
+        Source page: Whiteout Survival Wiki — “Chief Concierge” sneak peek.
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied!</div>
+
+  <script>
+    // Smooth scrolling for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', id);
+      });
+    });
+
+    // Copy gift code
+    const copyBtn = document.getElementById('copyBtn');
+    const giftCode = document.getElementById('giftCode');
+    const toast = document.getElementById('toast');
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      window.clearTimeout(showToast._t);
+      showToast._t = window.setTimeout(() => toast.classList.remove('show'), 1300);
+    }
+
+    copyBtn.addEventListener('click', async () => {
+      const text = giftCode.textContent.trim();
+      try{
+        await navigator.clipboard.writeText(text);
+        showToast('Copied: ' + text);
+      }catch(err){
+        // Fallback
+        const range = document.createRange();
+        range.selectNodeContents(giftCode);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        document.execCommand('copy');
+        sel.removeAllRanges();
+        showToast('Copied: ' + text);
+      }
+    });
+  </script>
+</body>
+</html>
