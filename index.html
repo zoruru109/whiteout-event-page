@@ -318,6 +318,26 @@
     @media (prefers-color-scheme: light){
       .toast{background: rgba(12,22,48,.86);}
     }
+    .reward-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-top:16px;
+}
+
+.reward-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  text-align:center;
+}
+
+.reward-card img{
+  width:100%;
+  border-radius:14px;
+  border:1px solid var(--line);
+}
   </style>
 </head>
 <body>
@@ -567,6 +587,38 @@
       </div>
     </section>
 
+<section id="anniversary-rewards" class="section">
+  <div class="card pad">
+    <h2>Anniversary Rewards & Cosmetics</h2>
+
+    <div class="reward-grid">
+
+      <div class="reward-card">
+        <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-10.gif">
+        <h3>March Skin</h3>
+      </div>
+
+      <div class="reward-card">
+        <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-3.gif">
+        <h3>City / Furnace Skin</h3>
+      </div>
+
+      <div class="reward-card">
+        <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/znq-5.gif">
+        <h3>Action Emote Sticker</h3>
+      </div>
+
+      <div class="reward-card">
+        <img src="https://gom-s3-user-avatar.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/03/QQ_1772537720513.png">
+        <h3>Furnace Nameplate</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    
     <section id="gallery" class="section">
       <div class="card pad">
         <h2>Gallery</h2>
